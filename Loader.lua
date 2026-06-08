@@ -31,7 +31,7 @@ local function saveKey(key)
 end
 
 local Window = Library:CreateWindow({
-    Title            = "Zinnyware v4.7",
+    Title            = "Zinnyware Loader",
     Footer           = "discord.gg/JW2pNczusb",
     NotifySide       = "Right",
     ShowCustomCursor = true,
