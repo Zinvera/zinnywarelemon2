@@ -1,4 +1,11 @@
 if not game then return end
+
+if lp_key and lp_key ~= "" then
+    getgenv().lp_key = lp_key
+    loadstring(game:HttpGet("https://luaprot.net/api/v2/loaders/get/60093404824722724300"))()
+    return
+end
+
 local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
 local Library      = loadstring(game:HttpGet(repo .. "Library.lua"))()
 local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
