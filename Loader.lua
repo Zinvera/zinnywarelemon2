@@ -1,8 +1,16 @@
 if not game then return end
 
+local scriptId = ({
+    [92416421522960] = "31902265834266433589",
+    [79268393072444] = "60093404824722724300",
+})[game.PlaceId]
+
+if not scriptId then
+    return game:GetService("Players").LocalPlayer:Kick("This game is not supported by Zinnyware!")
+end
+
 if lp_key and lp_key ~= "" then
-    getgenv().lp_key = lp_key
-    loadstring(game:HttpGet("https://luaprot.net/api/v2/loaders/get/60093404824722724300"))()
+    loadstring(game:HttpGet("https://luaprot.net/api/v2/loaders/get/" .. scriptId))()
     return
 end
 
@@ -21,7 +29,7 @@ local function getSavedKey()
     return nil
 end
 
-local function saveKey(key)
+local function saveKey(key) 
     pcall(function()
         makefolder("ZinnywareLemon")
     end)
@@ -53,7 +61,7 @@ end)
 local luaprotSdk = nil
 pcall(function()
     luaprotSdk = loadstring(game:HttpGet("https://sdk.luaprot.net/"))()
-    luaprotSdk.scriptId = "60093404824722724300"
+    luaprotSdk.scriptId = scriptId
 end)
 
 local function isKeyValid(key)
@@ -68,9 +76,9 @@ local function isKeyValid(key)
 end
 
 local function loadMainScript(key)
-    getgenv().lp_key = key
+    lp_key = key
     Library:Unload()
-    loadstring(game:HttpGet("https://luaprot.net/api/v2/loaders/get/60093404824722724300"))()
+    loadstring(game:HttpGet("https://luaprot.net/api/v2/loaders/get/" .. scriptId))()
 end
 
 local savedKey = getSavedKey()
